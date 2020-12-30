@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<form th:action="@{/findLieu}" method="get">
+	<label>Code Insee</label>
+	<input type="text" name="codeInsee" th:value="${codeInsee}" />
+	<button type="submit" class="btn btn-dark">Chercher</button>
+  </form> 
+  
+  
+  <table class="table table-bordered table-dark" th:if="${lieu}">
+<thead>
+<tr>
+<th>code insee</th>
+<th>Departement</th>
+<th>nom de la commune</th>
+<th>longitude</th>
+<th>latitude</th>
+<th>supprimer</th>
+<th>Modifier</th>
+</tr>
+</thead>
+<tbody >
+
+<tr  >
+
+ <td th:text="${lieu.codeInsee}"></td>
+<td th:text="${lieu.dep}"></td>
+<td th:text="${lieu.nomCom}" ></td>
+<td th:text="${lieu.longitude}"></td>
+<td th:text="${lieu.latitude}"></td>
+<td> <a onclick="return confirm('Etes vous sure ?')" th:href="@{/deleteLieu(codeInsee=${lieu.codeInsee})}">Supprimer</a></td>
+<td><a th:href="@{editLieu/{codeInsee}(codeInsee=${lieu.codeInsee})}">Edit</a></td>
+</tr>
+</tbody>
+</table>
+
+</body>
+</html>

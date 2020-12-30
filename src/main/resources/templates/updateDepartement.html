@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<form th:action="@{editDepartement/{dep}(dep=${departement.dep})}" th:object="${departement}" method="post">
+<label>Departement:</label>
+<input type="text" name="departement" th:field="*{dep}"/>
+<span th:if="${#fields.hasErrors('dep')}" th:errors="*{dep}"></span>
+
+<label>Chef lieu:</label>
+<input type="text" name="chefLieu" th:field="*{chefLieu}" />
+<span th:if="${#fields.hasErrors('chefLieu')}" th:errors="*{chefLieu}"></span>
+
+<label>Nom de departement:</label>
+<input type="text" name="nomDep" th:field="*{nomDep}" />
+<span th:if="${#fields.hasErrors('nomDep')}" th:errors="*{nomDep}"></span>
+
+<label>Numero de region:</label>
+<input type="text" name="numReg" th:field="*{numReg}"/>
+<span th:if="${#fields.hasErrors('numReg')}" th:errors="*{numReg}"></span>
+
+
+<input type="submit" value="valider" />
+<input type="reset" value="Reset" /> 
+</form>
+
+
+</body>
+</html>
