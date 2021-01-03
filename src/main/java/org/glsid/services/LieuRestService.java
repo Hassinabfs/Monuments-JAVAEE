@@ -77,7 +77,10 @@ public class LieuRestService {
 	
 	
 	
-	
+	@RequestMapping(value="/nav")
+	public String navbar() {
+		return "navbar";
+	}
 	
 	
 	@RequestMapping(value="/")

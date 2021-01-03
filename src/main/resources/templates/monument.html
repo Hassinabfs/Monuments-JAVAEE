@@ -4,44 +4,46 @@
    layout:decorator="navbar">
 <head>
 <link rel="stylesheet" th:href="@{https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css}" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> 
-<meta charset="UTF-8"/>
+<meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
-
-
 <body>
-
-
 <div layout:fragment="content" class="noborder">
 
 
 <table class="table table-bordered table-dark">
 <thead>
 <tr>
-<th>code insee</th>
-<th>Departement</th>
-<th>nom de la commune</th>
+<th>code monument</th>
+<th>nom</th>
+<th>proprietaire</th>
+<th>type</th>
 <th>longitude</th>
 <th>latitude</th>
+<th>localisation</th>
+<th>celebrite</th>
 </tr>
 </thead>
 <tbody >
 
-<tr th:each="lieu:${lieux}" >
+<tr th:each="monument:${monuments}" >
+<td th:text="${monument.codeM }"></td>
+<td th:text="${monument.nomM}"></td>
+<td th:text="${monument.proprietaire }" ></td>
+<td th:text="${monument.typeMonument }" ></td>
+<td th:text="${monument.longitude}"></td>
+<td th:text="${monument.latitude}"></td>
+<td th:text="${monument.localisation.codeInsee}"></td>
+<!--  <td th:text="${monument.celebriteS}"></td>-->
 
- <td th:text="${lieu.codeInsee}"></td>
-<td th:text="${lieu.dep.dep}"></td>
-<td th:text="${lieu.nomCom}" ></td>
-<td th:text="${lieu.longitude}"></td>
-<td th:text="${lieu.latitude}"></td>
 </tr>
 </tbody>
 </table>
 
+
 </div>
 
 <script th:replace="fragments :: scripts"></script>
-
 
 </body>
 </html>

@@ -23,7 +23,7 @@ public class Celebrite implements Serializable {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="numCelebrite")
-	private  int numC;
+	private  String numC;
 	@Column(length = 16)
 	private String nom;
 	@Column(length = 16)
@@ -41,7 +41,7 @@ public class Celebrite implements Serializable {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Celebrite(int numC, String nom, String prenom, String nationalite, String epoque,
+	public Celebrite( String numC, String nom, String prenom, String nationalite, String epoque,
 			Collection<Monument> oeuvreDe) {
 		super();
 		this.numC = numC;
@@ -52,11 +52,11 @@ public class Celebrite implements Serializable {
 		this.oeuvreDe = oeuvreDe;
 	}
 
-	public int getNumC() {
+	public  String getNumC() {
 		return numC;
 	}
 
-	public void setNumC(int numC) {
+	public void setNumC( String numC) {
 		this.numC = numC;
 	}
 

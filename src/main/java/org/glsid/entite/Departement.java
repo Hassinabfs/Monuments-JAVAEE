@@ -21,10 +21,13 @@ public class Departement implements Serializable  {
 	
 	@Column(length = 4)
 	private String dep;
+	
 	@Column(length = 46,name = "chefLieu")
 	private String chefLieu;
+	
 	@Column(length = 30,name = "nomDep")
 	private String nomDep;
+	
 	@Column(length = 5,name = "reg")
 	private String numReg;
 	

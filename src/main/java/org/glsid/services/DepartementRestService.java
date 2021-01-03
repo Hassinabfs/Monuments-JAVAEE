@@ -23,7 +23,7 @@ public class DepartementRestService {
 	@Autowired
 	private DepartementMetier departementMetier;
 
-	@RequestMapping(value="/departement",method=RequestMethod.GET)
+	@RequestMapping(value="/departements",method=RequestMethod.GET)
 	public String listDepartement(Model model) {
 		List<Departement> Departements = departementMetier.listDepartement();
 		model.addAttribute("departements",Departements);

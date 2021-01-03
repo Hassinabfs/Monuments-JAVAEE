@@ -43,7 +43,7 @@ public class Monument implements Serializable {
 	private Collection<Celebrite> celebriteS;
 	
 	@ManyToOne
-	@JoinColumn(name="codeLieu")
+	@JoinColumn(name="codeInsee")
 	private Lieu localisation;
 	
 	

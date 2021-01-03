@@ -4,38 +4,43 @@
    layout:decorator="navbar">
 <head>
 <link rel="stylesheet" th:href="@{https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css}" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> 
-
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
+
 <div layout:fragment="content" class="noborder">
 
-<form th:action="@{addLieu}" th:object="${lieu}" method="post">
-<label>Code insee</label>
-<input type="text" name="codeInsee" th:field="*{codeInsee}"/>
 
-<label>Departement</label>
-<input type="text" name="departement" th:field="*{dep.dep}" />
+<form th:action="@{addCelebrite}" th:object="${celebrite}" method="post">
+<label>numero</label>
+<input type="text" name="num" th:field="*{numC}"/>
 
-<label>Nom de la commune</label>
-<input type="text" name="nomCom" th:field="*{nomCom}" />
+<label>nom</label>
+<input type="text" name="nom" th:field="*{nom}" />
 
-<label>Longitude</label>
-<input type="text" name="longitude" th:field="*{longitude}"/>
+<label>prenom</label>
+<input type="text" name="prenom" th:field="*{prenom}" />
 
-<label>Latitude</label>
-<input type="text" name="latitude" th:field="*{latitude}"/>
+<label>nationalite</label>
+<input type="text" name="nationalite" th:field="*{nationalite}"/>
+
+<label>epoque</label>
+<input type="text" name="epoque" th:field="*{epoque}"/>
+
+<label>realisation</label>
+<input type="text" name="realisation" th:field="*{oeuvreDe}"/>
+
 
 
 <input type="submit" value="ajouter" />
 <input type="reset" value="Reset" /> 
 </form>
 
+
 </div>
 
 <script th:replace="fragments :: scripts"></script>
-
 
 </body>
 </html>

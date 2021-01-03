@@ -7,10 +7,7 @@
 <meta charset="UTF-8"/>
 <title>Insert title here</title>
 </head>
-
-
 <body>
-
 
 <div layout:fragment="content" class="noborder">
 
@@ -18,30 +15,31 @@
 <table class="table table-bordered table-dark">
 <thead>
 <tr>
-<th>code insee</th>
-<th>Departement</th>
-<th>nom de la commune</th>
-<th>longitude</th>
-<th>latitude</th>
+<th>numero</th>
+<th>nom</th>
+<th>prenom</th>
+<th>nationalite</th>
+<th>epoque</th>
+<th>realisation</th>
 </tr>
 </thead>
 <tbody >
 
-<tr th:each="lieu:${lieux}" >
+<tr th:each="celebrite:${celebrites}" >
 
- <td th:text="${lieu.codeInsee}"></td>
-<td th:text="${lieu.dep.dep}"></td>
-<td th:text="${lieu.nomCom}" ></td>
-<td th:text="${lieu.longitude}"></td>
-<td th:text="${lieu.latitude}"></td>
+ <td th:text="${celebrite.numC}"></td>
+<td th:text="${celebrite.nom}"></td>
+<td th:text="${celebrite.prenom}" ></td>
+<td th:text="${celebrite.nationalite}"></td>
+<td th:text="${celebrite.epoque}"></td>
+<td th:text="${celebrite.oeuvreDe}"></td>
 </tr>
 </tbody>
 </table>
 
 </div>
 
-<script th:replace="fragments :: scripts"></script>
-
+ <script th:replace="fragments :: scripts"></script>
 
 </body>
 </html>
