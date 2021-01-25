@@ -34,6 +34,11 @@ private MonumentMetierImpl monument;
 	
 	@Override
 	public void run(String... args) throws Exception {
+		
+		
+		//monument.distance(codeM1, codeM2);
+		
+		
 		//Departement d1 = departement.saveDepartement(new Departement("34","HERAULT","1053",null,null));
 		//Lieu l1= lieu.saveLieu(new Lieu("34172",d1,"MONTPELLIER",3.876716,43.610769,null));
 		//Lieu l2= lieu.saveLieu(new Lieu("34198",d1,"PEROLS",3.954211,43.563782,null));
@@ -55,4 +60,5 @@ private MonumentMetierImpl monument;
 //("spfb05ty554b","HOTEL DUFFAU","PRIVE","HOTEL_PARTICULIER",3.87521667,43.6140222,"34172");
 		//Monument m1= monument.saveMonument(new Monument("spfb05ty554b","HOTEL DUFFAU","PRIVE","HOTEL_PARTICULIER",3.87521667,43.6140222,null,l1));
 	}
+	
 }

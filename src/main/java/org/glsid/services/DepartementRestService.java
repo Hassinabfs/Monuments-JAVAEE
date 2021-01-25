@@ -8,6 +8,7 @@ import org.glsid.entite.Departement;
 import org.glsid.entite.Lieu;
 import org.glsid.metier.DepartementMetier;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,25 +24,30 @@ public class DepartementRestService {
 	@Autowired
 	private DepartementMetier departementMetier;
 
+	@Secured(value = { "ROLE_ADMIN","ROLE_USER"}) 
 	@RequestMapping(value="/departements",method=RequestMethod.GET)
 	public String listDepartement(Model model) {
 		List<Departement> Departements = departementMetier.listDepartement();
 		model.addAttribute("departements",Departements);
 		return "departement";
 	}
+	
+	@Secured(value = { "ROLE_ADMIN"}) 
 	@GetMapping(value="/formDepartement")
 	public String formDepartement(Model model) {
 		model.addAttribute("departement",new Departement());
 		return "formDepartement";
 	}
 	
+	
+	@Secured(value = { "ROLE_ADMIN"}) 
 	@RequestMapping(value="/addDepartement")
 	public String ajoutDepartement(Departement d) {
 		departementMetier.saveDepartement(d);
 		return "formDepartement";
 	}
 	
-	
+	@Secured(value = { "ROLE_ADMIN","ROLE_USER"}) 
 	@RequestMapping (value="/findDepartement")
 	public String getDepartementDep(Model model, String dep){
 		try {
@@ -52,6 +58,7 @@ public class DepartementRestService {
 		return "findDepartement";	
 	}
 	
+	@Secured(value = {"ROLE_ADMIN"}) 
 	@RequestMapping(value="/deleteDep")
 	public String removeDepartement(@RequestParam String dep ){
 		
@@ -62,13 +69,12 @@ public class DepartementRestService {
 		return "findDepartement";
 	}
 	
-	@GetMapping("/editDepartement/{dep}")
-	public String updateDep(@PathVariable("dep") String dep, Model model) {
+	@Secured(value = {"ROLE_ADMIN"}) 
+	@GetMapping("/editDepartement")
+	public String updateDep(String dep, Model model) {
 	    Departement  departement = departementMetier.findByDep(dep).orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + dep));
-	    List<Departement> deps = departementMetier.listDepartement();
 	    model.addAttribute("departement", departement);
-	    model.addAttribute("departements", deps);
-	    return "updateDepartement";
+	    return "formDepartement";
 	}
 	
 	

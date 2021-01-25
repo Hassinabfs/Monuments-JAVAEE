@@ -19,4 +19,5 @@ public interface MonumentMetier {
 	public boolean removeMonument(Monument m);
 	
 	public Monument updateMonument(Monument m);
+	public double distance(String codeMA, String codeMB);
 }

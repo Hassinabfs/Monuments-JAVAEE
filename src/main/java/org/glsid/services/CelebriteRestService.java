@@ -65,13 +65,11 @@ public class CelebriteRestService {
 		return "findCelebrite";
 	}
 	
-	@GetMapping("/editCelebrite/{numC}")
-	public String updateCelebrite(@PathVariable("numC")  String numC, Model model) {
+	@GetMapping("/editCelebrite")
+	public String updateCelebrite(String numC, Model model) {
 		Celebrite  celebrite = celebriteMetier.findByNumC(numC).orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + numC));
-	    List<Celebrite> celebrites = celebriteMetier.listCelebrite();
 	    model.addAttribute("celebrite", celebrite);
-	    model.addAttribute("celebrites", celebrites);
-	    return "updateCelebrite";
+	    return "formCelebrite";
 	}
 
 }

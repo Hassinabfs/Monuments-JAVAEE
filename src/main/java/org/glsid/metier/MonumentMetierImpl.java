@@ -7,6 +7,8 @@ import org.glsid.dao.MonumentRepository;
 import org.glsid.entite.Monument;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.apache.lucene.util.SloppyMath;
+
 @Service
 public class MonumentMetierImpl implements MonumentMetier {
 	@Autowired
@@ -52,6 +54,18 @@ public class MonumentMetierImpl implements MonumentMetier {
 	public Monument updateMonument(Monument m) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+
+	@Override
+	public double distance(String codeMA, String codeMB) {
+		// TODO Auto-generated method stub
+			double latitudeMA = monumentRepository.getOne(codeMA).getLatitude();
+			double longitudeMA=monumentRepository.getOne(codeMA).getLongitude();
+			double latitudeMB=monumentRepository.getOne(codeMB).getLatitude();
+			double longitudeMB = monumentRepository.getOne(codeMB).getLongitude();
+			double distance = SloppyMath.haversinKilometers(latitudeMA, longitudeMA, latitudeMB, longitudeMB);
+			return distance;
+		
 	}
 
 }

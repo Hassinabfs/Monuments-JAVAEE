@@ -11,25 +11,18 @@
 <body>
 <div layout:fragment="content" class="noborder">
 
-<form th:action="@{addLieu}" th:object="${lieu}" method="post">
-<label>Code insee</label>
-<input type="text" name="codeInsee" th:field="*{codeInsee}"/>
+<form th:action="@{addUser}" th:object="${user}" method="post">
+<label>Username</label>
+<input type="text" name="username" th:field="*{username}"/>
 
-<label>Departement</label>
-<input type="text" name="departement" th:field="*{dep.dep}" />
+<label>Email</label>
+<input type="text" name="email" th:field="*{email}" />
 
-<label>Nom de la commune</label>
-<input type="text" name="nomCom" th:field="*{nomCom}" />
+<label>Mot de passe</label>
+<input type="text" name="password" th:field="*{password}" />
 
-<label>Longitude</label>
-<input type="text" name="longitude" th:field="*{longitude}"/>
+<input type="submit" value="s'inscrire" />
 
-<label>Latitude</label>
-<input type="text" name="latitude" th:field="*{latitude}"/>
-
-
-<input type="submit" value="ajouter" />
-<input type="reset" value="Reset" /> 
 </form>
 
 </div>

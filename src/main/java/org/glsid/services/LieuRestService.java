@@ -8,10 +8,13 @@ import org.glsid.entite.Lieu;
 import org.glsid.metier.LieuMetier;
 import org.glsid.metier.LieuMetierImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -23,6 +26,8 @@ public class LieuRestService {
 	@Autowired
 	private LieuMetierImpl lieuMetier;
 	
+	
+	@Secured(value = { "ROLE_ADMIN","ROLE_USER"}) 
 	@RequestMapping(value="/lieux",method=RequestMethod.GET)
 	public String listLieu(Model model) {
 		List<Lieu> lieux = lieuMetier.listLieu();
@@ -30,13 +35,14 @@ public class LieuRestService {
 		return "lieux";
 	}
 	
-	
+	@Secured(value = { "ROLE_ADMIN"}) 
 	@GetMapping(value="/formLieu")
 	public String formLieu(Model model) {
 		model.addAttribute("lieu",new Lieu());
 		return "formLieu";
 	}
 	
+	@Secured(value = {"ROLE_ADMIN"}) 
 	@RequestMapping(value="/addLieu")
 	public String ajoutLieu(Lieu l) {
 		lieuMetier.saveLieu(l);
@@ -44,6 +50,7 @@ public class LieuRestService {
 	}
 	
 	
+	@Secured(value = { "ROLE_ADMIN","ROLE_USER"}) 
 	@RequestMapping (value="/findLieu")
 	public String getLieuCodeInsee(Model model, String codeInsee){
 		try {
@@ -54,6 +61,8 @@ public class LieuRestService {
 		return "findLieu";	
 	}
 	
+	
+	@Secured(value = {"ROLE_ADMIN"}) 
 	@RequestMapping(value="/deleteLieu")
 	public String removeLieu(@RequestParam String codeInsee ){
 		
@@ -64,28 +73,16 @@ public class LieuRestService {
 		return "findLieu";
 	}
 	
-	@GetMapping("/editLieu/{codeInsee}")
-	public String updateLieu(@PathVariable("codeInsee") String codeInsee, Model model) {
+	@Secured(value = {"ROLE_ADMIN"}) 
+	@GetMapping("/editLieu")
+	public String updateLieu( String codeInsee, Model model) {
 		Lieu  lieu = lieuMetier.findByCodeInsee(codeInsee).orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + codeInsee));
-	    List<Lieu> lieux = lieuMetier.listLieu();
 	    model.addAttribute("lieu", lieu);
-	    model.addAttribute("lieux", lieux);
-	    return "updateLieu";
+	    return "formLieu";
 	}
 	
 	
 	
-	
-	
-	@RequestMapping(value="/nav")
-	public String navbar() {
-		return "navbar";
-	}
-	
-	
-	@RequestMapping(value="/")
-	public String index() {
-		return "index";
-	}
+
 
 }

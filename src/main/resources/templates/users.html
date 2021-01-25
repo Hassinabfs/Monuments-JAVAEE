@@ -18,22 +18,27 @@
 <table class="table table-bordered table-dark">
 <thead>
 <tr>
-<th>code insee</th>
-<th>Departement</th>
-<th>nom de la commune</th>
-<th>longitude</th>
-<th>latitude</th>
+<th>ID</th>
+<th>Username</th>
+<th>Email</th>
+<th>Password</th>
+<th>Enabled</th>
+<th>Role</th>
 </tr>
 </thead>
 <tbody >
 
-<tr th:each="lieu:${lieux}" >
+<tr th:each="user:${users}" >
+ <td th:text="${user.id}"></td>
+ <td th:text="${user.username}"></td>
+<td th:text="${user.email}"></td>
+<td th:text="${user.password}" ></td>
+<td th:text="${user.enabled}"></td>
+<td th:text="${user.roles}"></td>
+<td> <a onclick="return confirm('Etes vous sure ?')" th:href="@{/deleteUser(username=${user.username})}">Supprimer</a></td>
 
- <td th:text="${lieu.codeInsee}"></td>
-<td th:text="${lieu.dep.dep}"></td>
-<td th:text="${lieu.nomCom}" ></td>
-<td th:text="${lieu.longitude}"></td>
-<td th:text="${lieu.latitude}"></td>
+
+
 </tr>
 </tbody>
 </table>

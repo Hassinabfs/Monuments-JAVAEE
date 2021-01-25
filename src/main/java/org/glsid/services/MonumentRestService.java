@@ -7,6 +7,8 @@ import org.glsid.entite.Lieu;
 import org.glsid.entite.Monument;
 import org.glsid.metier.MonumentMetier;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,6 +25,7 @@ public class MonumentRestService {
 	private MonumentMetier monumentMetier;
 	
 	
+	@Secured(value = { "ROLE_ADMIN","ROLE_USER"}) 
 	@RequestMapping(value="/monuments",method=RequestMethod.GET)
 	public String listMonument(Model model) {
 		List<Monument> monuments = monumentMetier.listMonument();
@@ -30,20 +33,21 @@ public class MonumentRestService {
 		return "monument";
 	}
 	
-	
+	@Secured(value = { "ROLE_ADMIN"}) 
 	@GetMapping(value="/formMonument")
 	public String formMonument(Model model) {
 		model.addAttribute("monument",new Monument());
 		return "formMonument";
 	}
 	
+	@Secured(value = { "ROLE_ADMIN"}) 
 	@RequestMapping(value="/addMonument")
 	public String ajoutMonument(Monument m) {
 		monumentMetier.saveMonument(m);
 		return "formMonument";
 	}
 	
-	
+	@Secured(value = { "ROLE_ADMIN","ROLE_USER"}) 
 	@RequestMapping (value="/findMonument")
 	public String getMonumentCodeM(Model model, String codeM){
 		try {
@@ -54,6 +58,7 @@ public class MonumentRestService {
 		return "findMonument";	
 	}
 	
+	@Secured(value = { "ROLE_ADMIN"}) 
 	@RequestMapping(value="/deleteMonument")
 	public String removeMonument(@RequestParam String codeM ){
 		
@@ -64,13 +69,30 @@ public class MonumentRestService {
 		return "findMonument";
 	}
 	
-	@GetMapping("/editMonument/{codeInsee}")
-	public String updateMonument(@PathVariable("codeInsee") String codeM, Model model) {
+	@Secured(value = { "ROLE_ADMIN"}) 
+	@GetMapping("/editMonument")
+	public String updateMonument(String codeM, Model model) {
 		Monument  monument = monumentMetier.findBycodeM(codeM).orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + codeM));
-	    List<Monument> monuments = monumentMetier.listMonument();
 	    model.addAttribute("monument", monument);
-	    model.addAttribute("monuments", monuments);
-	    return "updateMonument";
+	    return "formMonument";
 	}
+	
+	@Secured(value = { "ROLE_ADMIN","ROLE_USER"}) 
+	@GetMapping(value="/formMonumentDistance")
+	public String formMonumentDistance() {
+		return "distance";
+	}
+	
+	@Secured(value = { "ROLE_ADMIN","ROLE_USER"}) 
+	@RequestMapping(value = "/distance", method = RequestMethod.GET)
+	public String distance(Model model , String codeMA, String codeMB) {
+		Monument m1 = monumentMetier.getMonument(codeMA);
+		Monument m2 = monumentMetier.getMonument(codeMB);
+		double distance = monumentMetier.distance(codeMA, codeMB);
+		model.addAttribute("distance", distance);
+	
+	     return "distance"; 
+	}
+	
 
 }

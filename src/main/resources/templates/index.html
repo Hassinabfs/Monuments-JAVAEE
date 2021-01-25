@@ -13,7 +13,7 @@
 
           
                     
-                    <nav class="navbar navbar-expand-lg navbar-light bg-light ">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light ">
   <a class="navbar-brand" href="#">Navbar</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -63,10 +63,11 @@
         </a>
     
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" th:href="@{/Monuments}">Afficher</a>
+          <a class="dropdown-item" th:href="@{/monuments}">Afficher</a>
           <a class="dropdown-item" th:href="@{/findMonument}">Rechercher</a>
           <div class="dropdown-divider"></div>
           <a class="dropdown-item" th:href="@{/formMonument}">Ajouter</a>
+          <a class="dropdown-item" th:href="@{/formMonumentDistance}">Distance</a>
         </div>
       </li>
     
@@ -86,17 +87,26 @@
           <a class="dropdown-item" th:href="@{/formCelebrite}">Ajouter</a>
         </div>
       </li>
+      
+      
+      <li class="nav-item active">
+        <a class="nav-link" th:href="@{/users}">Users <span class="sr-only">(current)</span></a>
+      </li>
+      
+     
+      
    
     </ul>
   
   </div>
 </nav>
 
+
   
              <div layout:fragment="content" class="noborder">
 
 
-
+ <h1>Bienvenueeeeeeeeee</h1>
 
 
 
@@ -104,7 +114,8 @@
                     </div>
                     
                     
-                   <h1>Bienvenueeeeeeeeee</h1>
+                
+
       
 <th:block th:fragment="scripts">
          <!-- Begin fragment="scripts" -->

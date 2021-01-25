@@ -11,26 +11,19 @@
 
 <div layout:fragment="content" class="noborder">
 
-<table class="table table-bordered table-dark">
-<thead>
-<tr>
-<th>Departement</th>
-<th>Chef lieu</th>
-<th>numero de departement</th>
-<th>numero de region</th>
-</tr>
-</thead>
-<tbody >
+<form th:action="@{distance}" method="get">
+<label>Monument 1</label>
+<input type="text" name="codeMA"/>
 
-<tr th:each="departement:${departements}" >
 
- <td th:text="${departement.dep}"></td>
-<td th:text="${departement.chefLieu}"></td>
-<td th:text="${departement.nomDep}" ></td>
-<td th:text="${departement.numReg}"></td>
-</tr>
-</tbody>
-</table>
+<label>Monument 2</label>
+<input type="text" name="codeMB" />
+
+
+<input type="submit" value="calculer" />
+</form>
+
+<p th:text="${distance}"><p>
 
 
 </div>
