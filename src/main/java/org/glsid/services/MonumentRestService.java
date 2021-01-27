@@ -44,7 +44,7 @@ public class MonumentRestService {
 	@RequestMapping(value="/addMonument")
 	public String ajoutMonument(Monument m) {
 		monumentMetier.saveMonument(m);
-		return "formMonument";
+		return "index";
 	}
 	
 	@Secured(value = { "ROLE_ADMIN","ROLE_USER"}) 

@@ -35,8 +35,8 @@
 <td th:text="${user.password}" ></td>
 <td th:text="${user.enabled}"></td>
 <td th:text="${user.roles}"></td>
-<td> <a onclick="return confirm('Etes vous sure ?')" th:href="@{/deleteUser(username=${user.username})}">Supprimer</a></td>
-
+<td> <a onclick="return confirm('Etes vous sure ?')" th:href="@{/deleteUser(id=${user.id})}">Supprimer</a></td>
+<td><a th:href="@{editUser(username=${user.username})}">Edit</a></td>
 
 
 </tr>

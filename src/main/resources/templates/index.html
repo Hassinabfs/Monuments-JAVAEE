@@ -1,120 +1,98 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
-	<head>
-		<meta charset="UTF-8"/>
-		<title>
-			Bienvenue 
-		</title>
-        
-<link rel="stylesheet" th:href="@{https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css}" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> 
-	
-	</head>
-	<body>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScript Quiz</title>
+  <link rel="stylesheet" th:href="@{/css/index.css}"/>
+  <link rel="stylesheet" th:href="@{https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css}" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"/>
 
-          
-                    
-  <nav class="navbar navbar-expand-lg navbar-light bg-light ">
-  <a class="navbar-brand" href="#">Navbar</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
+</head> 
+<body>
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" th:href="@{/}">Accueil <span class="sr-only">(current)</span></a>
-      </li>
+
+
+    <div class="photo-container">
+    
+    <nav class="navbar navbar-expand-sm navbar-dark" data-id="web_navigation_bar">
+        <a class="navbar-brand brand-name" href> APPTRAVEL</a>
+       
+        <div class="collapse navbar-collapse" id="web_navigation_bar_collapse">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" th:href="@{/}">HOME</a>
+            
+              <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="dropdown07XL" data-toggle="dropdown"
+                aria-expanded="false" style="color: white;">  Departement</a>
+              <div class="dropdown-menu" style="background-color:transparent"  aria-labelledby="dropdown07XL">
+                <a class="dropdown-item" style="color: white;"th:href="@{/departements}"> Afficher</a>
+                <a class="dropdown-item" style="color: white;"th:href="@{/findDepartement}" >Rechercher</a>
+                <a class="dropdown-item" style="color: white;"th:href="@{/formDepartement}" >Ajouter</a>
+              </div>
+           </li>
+           
+           
+           <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="dropdown07XL" data-toggle="dropdown"
+                aria-expanded="false" style="color: white;">  Lieu</a>
+              <div class="dropdown-menu" style="background-color:transparent"  aria-labelledby="dropdown07XL">
+                <a class="dropdown-item" style="color: white;"th:href="@{/lieux}"> Afficher</a>
+                <a class="dropdown-item" style="color: white;"th:href="@{/findLieu}" >Rechercher</a>
+                <a class="dropdown-item" style="color: white;"th:href="@{/formLieu}" >Ajouter</a>
+              </div>
+           </li>
+           
+           
+           
+           <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="dropdown07XL" data-toggle="dropdown"
+                aria-expanded="false" style="color: white;">  Monument</a>
+              <div class="dropdown-menu" style="background-color:transparent"  aria-labelledby="dropdown07XL">
+                <a class="dropdown-item" style="color: white;"th:href="@{/monuments}"> Afficher</a>
+                <a class="dropdown-item" style="color: white;"th:href="@{/findMonument}" >Rechercher</a>
+                <a class="dropdown-item" style="color: white;"th:href="@{/formMonument}" >Ajouter</a>
+                <a class="dropdown-item" style="color: white;"th:href="@{/formMonumentDistance}" >Distance</a>
+              </div>
+           </li>
+           
+           
+              <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="dropdown07XL" data-toggle="dropdown"
+                aria-expanded="false" style="color: white;">  Celebrite</a>
+              <div class="dropdown-menu" style="background-color:transparent"  aria-labelledby="dropdown07XL">
+                <a class="dropdown-item" style="color: white;"th:href="@{/celebrites}"> Afficher</a>
+                <a class="dropdown-item" style="color: white;"th:href="@{/findCelebrite}" >Rechercher</a>
+                <a class="dropdown-item" style="color: white;"th:href="@{/formCelebrite}" >Ajouter</a>
+              </div>
+           </li>
+           
       
-    
-    <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" th:href="@{#}" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Departement
-        </a>
-    
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" th:href="@{/departements}">Afficher</a>
-          <a class="dropdown-item" th:href="@{/findDepartement}">Rechercher</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" th:href="@{/formDepartement}">Ajouter</a>
-        </div>
-      </li>
-      
-      
-      
-      
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" th:href="@{#}" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Lieu
-        </a>
-    
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" th:href="@{/lieux}">Afficher</a>
-          <a class="dropdown-item" th:href="@{/findLieu}">Rechercher</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" th:href="@{/formLieu}">Ajouter</a>
-        </div>
-      </li>
+              </li>
+            </ul>
+            </div>
+            </nav>
+
+
     
     
     
-     <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" th:href="@{#}" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Monument
-        </a>
-    
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" th:href="@{/monuments}">Afficher</a>
-          <a class="dropdown-item" th:href="@{/findMonument}">Rechercher</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" th:href="@{/formMonument}">Ajouter</a>
-          <a class="dropdown-item" th:href="@{/formMonumentDistance}">Distance</a>
-        </div>
-      </li>
-    
-   
-    
-    
-    
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" th:href="@{#}" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Celebrite
-        </a>
-    
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" th:href="@{/celebrites}">Afficher</a>
-          <a class="dropdown-item" th:href="@{/findCelebrite}">Rechercher</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" th:href="@{/formCelebrite}">Ajouter</a>
-        </div>
-      </li>
-      
-      
-      <li class="nav-item active">
-        <a class="nav-link" th:href="@{/users}">Users <span class="sr-only">(current)</span></a>
-      </li>
-      
+    <div layout:fragment="content" class="noborder">
      
-      
-   
-    </ul>
-  
+    <div class="flex-container container">
+    
+    
+      <h1>Bienvenue sur APPTRAVEL </h1>
+      <h2> Merci de vous identifiez</h2>
+     
+    </div>
+    </div>
+    
+    
+    
+    
   </div>
-</nav>
-
-
   
-             <div layout:fragment="content" class="noborder">
-
-
- <h1>Bienvenueeeeeeeeee</h1>
-
-
-
-                        
-                    </div>
-                    
-                    
-                
+<!-- <script src="js/quiz.js"></script> -->
 
       
 <th:block th:fragment="scripts">
@@ -122,11 +100,7 @@
        <script type="text/javascript" th:src="@{https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js}"></script>
          <script type="text/javascript" th:src="@{https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js}"></script>
          <script type="text/javascript" th:src="@{https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js}"></script>
-
-
-         <!-- data table -->
-        <!-- End fragment="scripts" -->       
+ 
       </th:block>   
-				
-		</body>
-	</html>
+</body>
+</html> 

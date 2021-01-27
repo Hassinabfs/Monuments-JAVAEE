@@ -3,38 +3,68 @@
    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
    layout:decorator="index">
 <head>
+<link rel="stylesheet" th:href="@{/css/formulaire.css}"/> 
 <link rel="stylesheet" th:href="@{https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css}" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> 
-
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
+
 <div layout:fragment="content" class="noborder">
 
-<form th:action="@{addLieu}" th:object="${lieu}" method="post">
-<label>Code insee</label>
-<input type="text" name="codeInsee" th:field="*{codeInsee}"/>
 
-<label>Departement</label>
-<input type="text" name="departement" th:field="*{dep.dep}" />
+<div class="photo-container">
+    <div class="flex-container container">
 
-<label>Nom de la commune</label>
-<input type="text" name="nomCom" th:field="*{nomCom}" />
+<div class="form-container">
+  <form th:action="@{addLieu}" th:object="${lieu}" method="post" class="form-form">
+    <ul class="form-nav">
+      <li class="form-nav__item active">
+        <a href="#">Ajouter/Modifier</a>
+      </li>
+   
+    </ul>
+    <label for="login-input-user" class="form__label">
+     Code insee
+     </label>
+    <input id="login-input-user" class="form__input" name="codeInsee" th:field="*{codeInsee}"/>
+    <span th:if="${#fields.hasErrors('codeInsee')}" th:errors="*{codeInsee}"></span>
+    
+    
+    <label for="login-input-user" class="form__label">
+     Departement
+     </label>
+    <input id="login-input-user" class="form__input" type="text" name="dep" th:field="*{dep.dep}" />
+	<span th:if="${#fields.hasErrors('dep')}" th:errors="*{dep.dep}"></span>
+	
+	
+	 <label for="login-input-user" class="form__label">
+     Nom de la commune
+     </label>
+    <input id="login-input-user" class="form__input" name="nomCom" th:field="*{nomCom}" />
+	<span th:if="${#fields.hasErrors('nomCom')}" th:errors="*{nomCom}"></span>
+	
+	
+<label for="login-input-user" class="form__label">
+      Longitude
+    </label>
+    <input id="login-input-user" class="form__input" name="longitude" th:field="*{longitude}"/>
+<span th:if="${#fields.hasErrors('longitude')}" th:errors="*{longitude}"></span>
 
-<label>Longitude</label>
-<input type="text" name="longitude" th:field="*{longitude}"/>
+<label for="login-input-user" class="form__label">
+      Latitude
+    </label>
+    <input id="login-input-user" class="form__input" name="latitude" th:field="*{latitude}"/>
+<span th:if="${#fields.hasErrors('latitude')}" th:errors="*{latitude}"></span>
 
-<label>Latitude</label>
-<input type="text" name="latitude" th:field="*{latitude}"/>
 
+    
+    
+    <button class="form__submit" type="submit">Valider</button>
+  </form>
 
-<input type="submit" value="ajouter" />
-<input type="reset" value="Reset" /> 
-</form>
-
-</div>
-
-<script th:replace="fragments :: scripts"></script>
+ </div>
+  </div>
 
 
 </body>

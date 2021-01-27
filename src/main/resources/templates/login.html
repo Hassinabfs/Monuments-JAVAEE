@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+   xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+   layout:decorator="index">
+<head>
+<link rel="stylesheet" th:href="@{/css/login.css}"/> 
+<link rel="stylesheet" th:href="@{https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css}" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> 
+
+
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<div layout:fragment="content" class="noborder">
+
+
+  <div class="flex-container container">
+<div class="login-container">
+  <form th:action="@{login}" class="form-login" method="post">
+    <ul class="login-nav">
+      <li class="login-nav__item active">
+        <a href="#">Sign In</a>
+      </li>
+   
+    </ul>
+    <label for="login-input-user" class="login__label">
+      Username
+    </label>
+    <input id="login-input-user" class="login__input" type="text" name="username"/>
+    <label for="login-input-password" class="login__label">
+      Password
+    </label>
+    <input id="login-input-password" class="login__input" type="password" name="password" />
+    <label for="login-sign-up" class="login__label--checkbox">
+      <input id="login-sign-up" type="checkbox" class="login__input--checkbox" />
+      Keep me Signed in
+    </label>
+    <button class="login__submit" type="submit">Sign in</button>
+  </form>
+  <a href="#" class="login__forgot">Forgot Password?</a>
+</div>
+</div>
+  
+
+
+
+
+</body>
+</html>

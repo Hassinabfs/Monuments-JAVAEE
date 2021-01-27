@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+	<head>
+		<meta charset="UTF-8"/>
+		<title>
+			Bienvenue 
+		</title>
+        
+<link rel="stylesheet" th:href="@{https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css}" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> 
+	
+	</head>
+	<body>
+
+          
+                    
+  <nav class="navbar navbar-expand-lg navbar-light bg-light ">
+  <a class="navbar-brand" href="#">Navbar</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" th:href="@{/}">Accueil <span class="sr-only">(current)</span></a>
+      </li>
+      
+    
+    <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" th:href="@{#}" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Departement
+        </a>
+    
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" th:href="@{/departements}">Afficher</a>
+          <a class="dropdown-item" th:href="@{/findDepartement}">Rechercher</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" th:href="@{/formDepartement}">Ajouter</a>
+        </div>
+      </li>
+      
+      
+      
+      
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" th:href="@{#}" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Lieu
+        </a>
+    
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" th:href="@{/lieux}">Afficher</a>
+          <a class="dropdown-item" th:href="@{/findLieu}">Rechercher</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" th:href="@{/formLieu}">Ajouter</a>
+        </div>
+      </li>
+    
+    
+    
+     <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" th:href="@{#}" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Monument
+        </a>
+    
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" th:href="@{/monuments}">Afficher</a>
+          <a class="dropdown-item" th:href="@{/findMonument}">Rechercher</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" th:href="@{/formMonument}">Ajouter</a>
+          <a class="dropdown-item" th:href="@{/formMonumentDistance}">Distance</a>
+        </div>
+      </li>
+    
+   
+    
+    
+    
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" th:href="@{#}" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Celebrite
+        </a>
+    
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" th:href="@{/celebrites}">Afficher</a>
+          <a class="dropdown-item" th:href="@{/findCelebrite}">Rechercher</a>
+          <div class="dropdown-divider"></div>
+          <a class="dropdown-item" th:href="@{/formCelebrite}">Ajouter</a>
+        </div>
+      </li>
+      
+      
+      <li class="nav-item active">
+        <a class="nav-link" th:href="@{/users}">Users </a>
+      </li>
+      <!--  <li class="nav-item active">
+        <a class="nav-link" th:href="@{/formUser}">Inscription</a>
+      </li>
+           <li class="nav-item active">
+        <a class="nav-link" th:href="@{/login}">Login</a>
+      </li>-->
+      
+   
+    </ul>
+  
+  </div>
+</nav>
+
+
+  
+             <div layout:fragment="content" class="noborder">
+
+
+ <h1>Bienvenueeeeeeeeee</h1>
+
+
+
+                        
+                    </div>
+                    
+                    
+                
+
+      
+<th:block th:fragment="scripts">
+         <!-- Begin fragment="scripts" -->
+       <script type="text/javascript" th:src="@{https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js}"></script>
+         <script type="text/javascript" th:src="@{https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js}"></script>
+         <script type="text/javascript" th:src="@{https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js}"></script>
+
+
+         <!-- data table -->
+        <!-- End fragment="scripts" -->       
+      </th:block>   
+				
+		</body>
+	</html>

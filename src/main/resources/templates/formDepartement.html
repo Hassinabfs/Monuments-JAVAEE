@@ -3,38 +3,62 @@
    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
    layout:decorator="index">
 <head>
+<link rel="stylesheet" th:href="@{/css/formulaire.css}"/> 
 <link rel="stylesheet" th:href="@{https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css}" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> 
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
+
 <div layout:fragment="content" class="noborder">
 
+
+<div class="photo-container">
+    <div class="flex-container container">
+
+<div class="form-container">
+  <form th:action="@{addDepartement}" th:object="${departement}" method="post" class="form-form">
+    <ul class="form-nav">
+      <li class="form-nav__item active">
+        <a href="#">Ajouter/Modifier</a>
+      </li>
+   
+    </ul>
+    <label for="login-input-user" class="form__label">
+     Departement
+     </label>
+    <input id="login-input-user" class="form__input" name="dep" th:field="*{dep}"/>
+    <span th:if="${#fields.hasErrors('dep')}" th:errors="*{dep}"></span>
+    
+    
+    <label for="login-input-user" class="form__label">
+     Chef lieu
+     </label>
+    <input id="login-input-user" class="form__input" type="text" name="chefLieu" th:field="*{chefLieu}" />
+	<span th:if="${#fields.hasErrors('chefLieu')}" th:errors="*{chefLieu}"></span>
 	
-<form th:action="@{addDepartement}" th:object="${departement}" method="post">
+	
+	 <label for="login-input-user" class="form__label">
+     Nom de departement
+     </label>
+    <input id="login-input-user" class="form__input" name="nomDep" th:field="*{nomDep}" />
+	<span th:if="${#fields.hasErrors('nomDep')}" th:errors="*{nomDep}"></span>
+	
+	
+<label for="login-input-user" class="form__label">
+      Numero de region
+    </label>
+    <input id="login-input-user" class="form__input" name="numReg" th:field="*{numReg}"/>
+<span th:if="${#fields.hasErrors('numReg')}" th:errors="*{numReg}"></span>
 
 
-<label>Departement:</label>
-<input type="text" name="departement" th:field="*{dep}"/>
+    
+    <button class="form__submit" type="submit">Valider</button>
+  </form>
 
-<label>Chef lieu:</label>
-<input type="text" name="chefLieu" th:field="*{chefLieu}" />
+ </div>
+  </div>
 
-<label>Nom de departement:</label>
-<input type="text" name="nomDep" th:field="*{nomDep}" />
-
-<label>Numero de region:</label>
-<input type="text" name="numReg" th:field="*{numReg}"/>
-
-
-<input type="submit" value="ajouter" />
-<input type="reset" value="Reset" /> 
-</form>
-
-
-</div>
-
-<script th:replace="fragments :: scripts"></script>
 
 </body>
 </html>

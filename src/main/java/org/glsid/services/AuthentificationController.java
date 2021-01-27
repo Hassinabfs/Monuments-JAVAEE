@@ -2,7 +2,9 @@ package org.glsid.services;
 
 import java.util.List;
 
+import org.glsid.dao.UserRepository;
 import org.glsid.entite.Lieu;
+import org.glsid.entite.Monument;
 import org.glsid.entite.User;
 import org.glsid.metier.MonumentMetier;
 import org.glsid.metier.UserMetier;
@@ -26,19 +28,17 @@ public class AuthentificationController {
 	
 	@Autowired
 	private UserMetierImpl userMetier;
+	@Autowired
+	UserRepository userRepository;
 	
 	@GetMapping(value = {"/login"})
 	public String login() {
-		//ModelAndView modelAndView = new ModelAndView();
-		//modelAndView.setViewName("login");
-		return "formLogin";
+		return "login";
 	}
 	
 	
 	@RequestMapping(value = {"/lo"}, method = RequestMethod.GET)
 	public String lo() {
-		//ModelAndView modelAndView = new ModelAndView();
-		//modelAndView.setViewName("login");
 		return "monument";
 	}
 	
@@ -50,18 +50,18 @@ public class AuthentificationController {
 		return "users";
 	}
 	
-	@Secured(value = { "ROLE_ADMIN","ROLE_USER"}) 
+	
 	@GetMapping(value="/formUser")
 	public String formUser(Model model) {
-		model.addAttribute("User",new User());
-		return "formUser";
+		model.addAttribute("user",new User());
+		return "formInscription";
 	}
 	
 	@Secured(value = { "ROLE_ADMIN","ROLE_USER"}) 
 	@RequestMapping(value="/addUser")
 	public String ajoutUser(User u) {
 		userMetier.saveUser(u);
-		return "formUser";
+		return "formInscription";
 	}
 	
 	@Secured(value = { "ROLE_ADMIN"}) 
@@ -73,56 +73,18 @@ public class AuthentificationController {
 			userMetier.removeUser(deleteUser);
 		}
 		return "users";
+		
+		
 	}
 	
-	/*@GetMapping("/editLieu/{username}")
-	public String updateUser(@PathVariable("username") String username, Model model) {
-		User user = UserMetier.findByUsername(username).orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + codeInsee));
-	    List<User> Users= UserMetier.listUser();
-	    model.addAttribute("User", User);
-	    model.addAttribute("Users", Users);
-	    return "updateUser";
-	}*/
+	@Secured(value = { "ROLE_ADMIN"}) 
+	@GetMapping("/editUser")
+	public String updateUser(String username, Model model) {
+		User user = userRepository.findByUsername(username).orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + username));
+	    model.addAttribute("user", user);
+	    return "formUser";
 	
+	}	
 	
-	
-	
-	/*@RequestMapping(value = {"/register"}, method = RequestMethod.GET)
-	public ModelAndView register() {
-		ModelAndView modelAndView = new ModelAndView();
-		User user  = new User();
-		modelAndView.addObject("user",user);
-		modelAndView.setViewName("register");
-		return modelAndView;
-	}
-	
-	@RequestMapping(value = {"/home"}, method = RequestMethod.GET)
-	public ModelAndView home() {
-		ModelAndView modelAndView = new ModelAndView();
-		modelAndView.setViewName("home");
-		return modelAndView;
-	}
-	
-	
-	@RequestMapping(value = {"/register"}, method = RequestMethod.POST)
-	public ModelAndView registerUser(@Validated User user,BindingResult bindingResult,ModelMap modelMap ) {
-		ModelAndView modelAndView = new ModelAndView();
-		if(bindingResult.hasErrors()) {
-			modelAndView.addObject("successMessage","svp corriger l'erreur dans le formulaire");
-			modelMap.addAttribute("bindingResult",bindingResult);
-		}
-		else if (userMetier.isUserAlreadyPresent(user)) {
-			modelAndView.addObject("successMessage","user already exists!");
-		}
-		else {
-			userMetier.saveUser(user);
-			modelAndView.addObject("successMessage","user is regitred successfully!");
-			
-		}
-		modelAndView.addObject("user",new User());
-		modelAndView.setViewName("register");
-		return modelAndView;
-	}
-	
-	*/
+
 }

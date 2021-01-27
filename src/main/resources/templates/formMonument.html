@@ -3,6 +3,7 @@
    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
    layout:decorator="index">
 <head>
+<link rel="stylesheet" th:href="@{/css/formulaire.css}"/> 
 <link rel="stylesheet" th:href="@{https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css}" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> 
 <meta charset="UTF-8">
 <title>Insert title here</title>
@@ -11,42 +12,71 @@
 
 <div layout:fragment="content" class="noborder">
 
-<form th:action="@{addMonument}" th:object="${monument}" method="post">
-<label>Code </label>
-<input type="text" name="codeM" th:field="*{codeM}"/>
-<span th:if="${#fields.hasErrors('codeM')}" th:errors="*{codeM}"></span>
 
-<label>nom</label>
-<input type="text" name="nomM" th:field="*{nomM}" />
-<span th:if="${#fields.hasErrors('nomM')}" th:errors="*{nomM}"></span>
+<div class="photo-container">
+    <div class="flex-container container">
 
-<label>proprietaire</label>
-<input type="text" name="proprietaire" th:field="*{proprietaire}" />
-<span th:if="${#fields.hasErrors('proprietaire')}" th:errors="*{proprietaire}"></span>
-
-<label>type</label>
-<input type="text" name="typeMonument" th:field="*{typeMonument}" />
+<div class="form-container">
+  <form th:action="@{addMonument}" th:object="${monument}" method="post" class="form-form">
+    <ul class="form-nav">
+      <li class="form-nav__item active">
+        <a href="#">Ajouter/Modifier</a>
+      </li>
+   
+    </ul>
+    <label for="login-input-user" class="form__label">
+      Code monument
+    </label>
+    <input id="login-input-user" class="form__input" type="text" name="codeM" th:field="*{codeM}"/>
+    <span th:if="${#fields.hasErrors('codeM')}" th:errors="*{codeM}"></span>
+    
+    
+    <label for="login-input-user" class="form__label">
+      Nom monument
+    </label>
+    <input id="login-input-user" class="form__input" type="text" name="nomM" th:field="*{nomM}" />
+	<span th:if="${#fields.hasErrors('nomM')}" th:errors="*{nomM}"></span>
+	
+	
+	 <label for="login-input-user" class="form__label">
+      Proprietaire
+    </label>
+    <input id="login-input-user" class="form__input" name="proprietaire" th:field="*{proprietaire}" />
+	<span th:if="${#fields.hasErrors('proprietaire')}" th:errors="*{proprietaire}"></span>
+	
+	
+	<label for="login-input-user" class="form__label">
+      Type
+    </label>
+    <input id="login-input-user" class="form__input" name="typeMonument" th:field="*{typeMonument}" />
 <span th:if="${#fields.hasErrors('typeMonument')}" th:errors="*{typeMonument}"></span>
 
-<label>Longitude</label>
-<input type="text" name="longitude" th:field="*{longitude}"/>
+<label for="login-input-user" class="form__label">
+      Longitude
+    </label>
+    <input id="login-input-user" class="form__input" name="longitude" th:field="*{longitude}"/>
 <span th:if="${#fields.hasErrors('longitude')}" th:errors="*{longitude}"></span>
 
-<label>Latitude</label>
-<input type="text" name="latitude" th:field="*{latitude}"/>
+<label for="login-input-user" class="form__label">
+      Latitude
+    </label>
+    <input id="login-input-user" class="form__input" name="latitude" th:field="*{latitude}"/>
 <span th:if="${#fields.hasErrors('latitude')}" th:errors="*{latitude}"></span>
 
-<label>localisation</label>
-<input type="text" name="localisation" th:field="*{localisation.codeInsee}"/>
+<label for="login-input-user" class="form__label">
+      Localisation
+    </label>
+    <input id="login-input-user" class="form__input" name="localisation" th:field="*{localisation.codeInsee}"/>
 <span th:if="${#fields.hasErrors('localisation')}" th:errors="*{localisation}"></span>
 
+    
+    
+    <button class="form__submit" type="submit">Valider</button>
+  </form>
 
-<input type="submit" value="valider" />
+ </div>
+  </div>
 
 
-
-</div>
-
-<script th:replace="fragments :: scripts"></script>
 </body>
 </html>

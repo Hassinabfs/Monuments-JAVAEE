@@ -3,6 +3,7 @@
    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
    layout:decorator="index">
 <head>
+<link rel="stylesheet" th:href="@{/css/formulaire.css}"/> 
 <link rel="stylesheet" th:href="@{https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css}" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> 
 <meta charset="UTF-8">
 <title>Insert title here</title>
@@ -12,35 +13,70 @@
 <div layout:fragment="content" class="noborder">
 
 
-<form th:action="@{addCelebrite}" th:object="${celebrite}" method="post">
-<label>numero</label>
-<input type="text" name="num" th:field="*{numC}"/>
+<div class="photo-container">
+    <div class="flex-container container">
 
-<label>nom</label>
-<input type="text" name="nom" th:field="*{nom}" />
+<div class="form-container">
+  <form th:action="@{addCelebrite}" th:object="${celebrite}" method="post" class="form-form">
+    <ul class="form-nav">
+      <li class="form-nav__item active">
+        <a href="#">Ajouter/Modifier</a>
+      </li>
+   
+    </ul>
+    <label for="login-input-user" class="form__label">
+      Numero
+    </label>
+    <input id="login-input-user" class="form__input" type="text" name="numC" th:field="*{numC}"/>
+    <span th:if="${#fields.hasErrors('numC')}" th:errors="*{numC}"></span>
+    
+    
+    <label for="login-input-user" class="form__label">
+      Nom de la celebrite
+    </label>
+    <input id="login-input-user" class="form__input" type="text" name="nom" th:field="*{nom}" />
+	<span th:if="${#fields.hasErrors('nom')}" th:errors="*{nom}"></span>
+	
+	
+	 <label for="login-input-user" class="form__label">
+      Prenom de la celebrite
+    </label>
+    <input id="login-input-user" class="form__input" name="prenom" th:field="*{prenom}" />
+	<span th:if="${#fields.hasErrors('prenom')}" th:errors="*{prenom}"></span>
+	
+	
+	<label for="login-input-user" class="form__label">
+      Nationalite
+    </label>
+    <input id="login-input-user" class="form__input" name="nationalite" th:field="*{nationalite}" />
+<span th:if="${#fields.hasErrors('nationalite')}" th:errors="*{nationalite}"></span>
 
-<label>prenom</label>
-<input type="text" name="prenom" th:field="*{prenom}" />
+<label for="login-input-user" class="form__label">
+      Epoque
+    </label>
+    <input id="login-input-user" class="form__input" name="epoque" th:field="*{epoque}"/>
+<span th:if="${#fields.hasErrors('epoque')}" th:errors="*{epoque}"></span>
 
-<label>nationalite</label>
-<input type="text" name="nationalite" th:field="*{nationalite}"/>
-
-<label>epoque</label>
-<input type="text" name="epoque" th:field="*{epoque}"/>
-
-<label>realisation</label>
-<input type="text" name="realisation" th:field="*{oeuvreDe}"/>
-
-
-
-<input type="submit" value="ajouter" />
-<input type="reset" value="Reset" /> 
-</form>
+<label for="login-input-user" class="form__label">
+      Realisation
+    </label>
+    <input id="login-input-user" class="form__input" name="oeuvreDe" th:field="*{oeuvreDe}"/>
+<span th:if="${#fields.hasErrors('oeuvreDe')}" th:errors="*{oeuvreDe}"></span>
 
 
-</div>
+    
+    <button class="form__submit" type="submit">Valider</button>
+  </form>
 
-<script th:replace="fragments :: scripts"></script>
+ </div>
+  </div>
+
 
 </body>
 </html>
+
+
+
+
+
+

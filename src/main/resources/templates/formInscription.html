@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<link rel="stylesheet" th:href="@{/css/login.css}"/> 
+
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+<div class="photo-container">
+  <div class="flex-container container">
+<div class="login-container">
+  <form th:action="@{addUser}" th:object="${user}" method="post"class="form-login">
+    <ul class="login-nav">
+      <li class="login-nav__item active">
+        <a href="#">Inscription</a>
+      </li>
+   
+   
+    </ul>
+    <label for="login-input-user" class="login__label">
+      Username
+    </label>
+    <input id="login-input-user" class="login__input" type="text" name="username"th:field="*{username}"/>
+    <label for="login-input-user" class="login__label">
+      Email
+    </label>
+    <input id="login-input-user" class="login__input" type="text" name="email" th:field="*{email}"/>
+    <label for="login-input-password" class="login__label">
+      Password
+    </label>
+    <input id="login-input-password" class="login__input" type="password" name="password" th:field="*{password}"  />
+   
+    <button class="login__submit" disabled>S'inscrire</button>
+  </form>
+  
+</div>
+</div>
+  </div>
+
+
+</body>
+</html>
