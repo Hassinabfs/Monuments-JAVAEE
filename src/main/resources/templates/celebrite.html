@@ -3,17 +3,29 @@
    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
    layout:decorator="index">
 <head>
+<link rel="stylesheet" th:href="@{/css/find.css}"/>
 <link rel="stylesheet" th:href="@{https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css}" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> 
-<meta charset="UTF-8"/>
+
+<meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
 
 <div layout:fragment="content" class="noborder">
 
+    <div class="flex-container container">
 
-<table class="table table-bordered table-dark">
-<thead>
+
+<form th:action="@{/findCelebrite}" method="get">
+	
+    <input id="login-input-user" class="form__input" type="text" placeholder="num de celebrite"name="numC" th:value="${numC}" />
+	
+	<button type="submit" class="btn btn-dark"  style="border-radius: 1.5rem;">Chercher</button>
+  </form> 
+  
+  
+  <table class="table" style="margin: auto;width: 1100px" >
+<thead class="thead-light">
 <tr>
 <th>numero</th>
 <th>nom</th>
@@ -25,21 +37,34 @@
 </thead>
 <tbody >
 
-<tr th:each="celebrite:${celebrites}" >
+<tr th:each="celebrite:${celebrites}" style="background-color: rgba(204, 187, 187, 0.25);" >
 
- <td th:text="${celebrite.numC}"></td>
-<td th:text="${celebrite.nom}"></td>
-<td th:text="${celebrite.prenom}" ></td>
-<td th:text="${celebrite.nationalite}"></td>
-<td th:text="${celebrite.epoque}"></td>
-<td th:text="${celebrite.oeuvreDe}"></td>
+<td style="color: white;" th:text="${celebrite.numC}"></td>
+<td style="color: white;" th:text="${celebrite.nom}"></td>
+<td style="color: white;" th:text="${celebrite.prenom}" ></td>
+<td style="color: white;" th:text="${celebrite.nationalite}"></td>
+<td style="color: white;" th:text="${celebrite.epoque}"></td>
+<td style="color: white;" th:text="${celebrite.oeuvreDe}"></td>
+
+    
+      <div class="table-button-container">
+         <td> <button class="btn btn-warning btn-sm" @click="editRow(props.rowData)">
+            <span class="glyphicon glyphicon-pencil"></span> <a th:href="@{editCelebrite(numC=${celebrite.numC})}">Edit</a></button></td>
+         
+          <td><button type="submit" class="btn btn-danger btn-sm" @click="deleteRow(props.rowData)">
+            <span class="glyphicon glyphicon-trash"></span>  <a onclick="return confirm('Etes vous sure ?')" th:href="@{/deleteCelebrite(numC=${celebrite.numC})}">Delete</a></button></td>
+      </div>
+
 </tr>
-</tbody>
-</table>
 
+</tbody>
+</table> 
+  
 </div>
 
- <script th:replace="fragments :: scripts"></script>
 
+  
 </body>
 </html>
+
+

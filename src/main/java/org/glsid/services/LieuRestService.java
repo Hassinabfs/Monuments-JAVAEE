@@ -62,6 +62,21 @@ public class LieuRestService {
 	}
 	
 	
+	@Secured(value = { "ROLE_ADMIN","ROLE_USER"}) 
+	@RequestMapping (value="/findLieuDep")
+	public String getLieuDep(Model model, Departement dep){
+		try {
+	Optional<Lieu> listLieu= lieuMetier.findDepartByDep(dep);
+		model.addAttribute("lieu", listLieu.get());
+		}catch(Exception e) {
+		model.addAttribute("Exception",e);}
+		return "findLieu";	
+	}
+	
+	
+	
+	
+	
 	@Secured(value = {"ROLE_ADMIN"}) 
 	@RequestMapping(value="/deleteLieu")
 	public String removeLieu(@RequestParam String codeInsee ){

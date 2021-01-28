@@ -1,12 +1,19 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+   xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+   layout:decorator="index">
 <head>
 <link rel="stylesheet" th:href="@{/css/login.css}"/> 
+<link rel="stylesheet" th:href="@{https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css}" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> 
+
 
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
 <body>
+
+<div layout:fragment="content" class="noborder">
+
 <div class="photo-container">
   <div class="flex-container container">
 <div class="login-container">
@@ -31,7 +38,7 @@
     </label>
     <input id="login-input-password" class="login__input" type="password" name="password" th:field="*{password}"  />
    
-    <button class="login__submit" disabled>S'inscrire</button>
+    <button class="login__submit" type="submit" >S'inscrire</button>
   </form>
   
 </div>

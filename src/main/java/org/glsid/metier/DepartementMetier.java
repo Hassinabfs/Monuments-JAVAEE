@@ -19,6 +19,7 @@ public interface DepartementMetier {
 	//public List<Departement> findByNomDep(String nomDep);
 	
 	public Optional<Departement> findByDep(String dep);
+	public Optional<Departement> findByNomDep(String dep);
 
 	public boolean removeDepartement(Departement d);
 	

@@ -37,9 +37,9 @@ public class AuthentificationController {
 	}
 	
 	
-	@RequestMapping(value = {"/lo"}, method = RequestMethod.GET)
-	public String lo() {
-		return "monument";
+	@RequestMapping(value = {"/relogin"}, method = RequestMethod.GET)
+	public String relogin() {
+		return "login";
 	}
 	
 	@Secured(value = {"ROLE_ADMIN"}) 
@@ -61,7 +61,7 @@ public class AuthentificationController {
 	@RequestMapping(value="/addUser")
 	public String ajoutUser(User u) {
 		userMetier.saveUser(u);
-		return "formInscription";
+		return "login";
 	}
 	
 	@Secured(value = { "ROLE_ADMIN"}) 

@@ -3,7 +3,9 @@
    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
    layout:decorator="index">
 <head>
+<link rel="stylesheet" th:href="@{/css/login.css}"/>
 <link rel="stylesheet" th:href="@{https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css}" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> 
+
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
@@ -11,24 +13,36 @@
 
 <div layout:fragment="content" class="noborder">
 
-<form th:action="@{distance}" method="get">
-<label>Monument 1</label>
-<input type="text" name="codeMA"/>
-
-
-<label>Monument 2</label>
-<input type="text" name="codeMB" />
-
-
-<input type="submit" value="calculer" />
-</form>
-
-<p th:text="${distance}"><p>
-
+<div class="photo-container">
+  <div class="flex-container container">
+<div class="login-container">
+  <form th:action="@{distance}"  method="get" class="form-login">
+    <ul class="login-nav">
+      <li class="login-nav__item active">
+        <a href="#">Calcule de distance</a>
+      </li>
+   
+   
+    </ul>
+    <label for="login-input-user" class="login__label">
+      Monument 1
+    </label>
+    <input id="login-input-user" class="login__input" type="text" name="codeMA"/>
+    <label for="login-input-user" class="login__label">
+      Monument 2
+    </label>
+    <input id="login-input-user" class="login__input" type="text" name="codeMB" />
+   
+    <button class="login__submit" type="submit" >Calculer</button>
+  </form>
+  
+  
+  <p  style="color: white;font-weight:100px;"th:text="${distance}" ><p>Km
 
 </div>
+</div>
+</div>
 
-<script th:replace="fragments :: scripts"></script>
 
 </body>
 </html>

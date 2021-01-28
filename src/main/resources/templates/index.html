@@ -20,14 +20,15 @@
           <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
               <a class="nav-link" th:href="@{/}">HOME</a>
+              </li>
             
               <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="dropdown07XL" data-toggle="dropdown"
                 aria-expanded="false" style="color: white;">  Departement</a>
-              <div class="dropdown-menu" style="background-color:transparent"  aria-labelledby="dropdown07XL">
-                <a class="dropdown-item" style="color: white;"th:href="@{/departements}"> Afficher</a>
-                <a class="dropdown-item" style="color: white;"th:href="@{/findDepartement}" >Rechercher</a>
-                <a class="dropdown-item" style="color: white;"th:href="@{/formDepartement}" >Ajouter</a>
+              <div class="dropdown-menu"  aria-labelledby="dropdown07XL">
+                <a class="dropdown-item" th:href="@{/departements}"> Afficher</a>
+                <a class="dropdown-item" th:href="@{/findDepartement}" >Rechercher</a>
+                <a sec:authorize="hasRole('ROLE_ADMIN')" class="dropdown-item" th:href="@{/formDepartement}" >Ajouter</a>
               </div>
            </li>
            
@@ -35,10 +36,10 @@
            <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="dropdown07XL" data-toggle="dropdown"
                 aria-expanded="false" style="color: white;">  Lieu</a>
-              <div class="dropdown-menu" style="background-color:transparent"  aria-labelledby="dropdown07XL">
-                <a class="dropdown-item" style="color: white;"th:href="@{/lieux}"> Afficher</a>
-                <a class="dropdown-item" style="color: white;"th:href="@{/findLieu}" >Rechercher</a>
-                <a class="dropdown-item" style="color: white;"th:href="@{/formLieu}" >Ajouter</a>
+              <div class="dropdown-menu"  aria-labelledby="dropdown07XL">
+                <a class="dropdown-item" th:href="@{/lieux}"> Afficher</a>
+                <a class="dropdown-item" th:href="@{/findLieu}" >Rechercher</a>
+                <a sec:authorize="hasRole('ROLE_ADMIN')"  class="dropdown-item" th:href="@{/formLieu}" >Ajouter</a>
               </div>
            </li>
            
@@ -47,11 +48,11 @@
            <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="dropdown07XL" data-toggle="dropdown"
                 aria-expanded="false" style="color: white;">  Monument</a>
-              <div class="dropdown-menu" style="background-color:transparent"  aria-labelledby="dropdown07XL">
-                <a class="dropdown-item" style="color: white;"th:href="@{/monuments}"> Afficher</a>
-                <a class="dropdown-item" style="color: white;"th:href="@{/findMonument}" >Rechercher</a>
-                <a class="dropdown-item" style="color: white;"th:href="@{/formMonument}" >Ajouter</a>
-                <a class="dropdown-item" style="color: white;"th:href="@{/formMonumentDistance}" >Distance</a>
+              <div class="dropdown-menu"   aria-labelledby="dropdown07XL">
+                <a class="dropdown-item" th:href="@{/monuments}"> Afficher</a>
+                <a class="dropdown-item"th:href="@{/findMonument}" >Rechercher</a>
+                <a sec:authorize="hasRole('ROLE_ADMIN')" class="dropdown-item" th:href="@{/formMonument}" >Ajouter</a>
+                <a class="dropdown-item" th:href="@{/formMonumentDistance}" >Distance</a>
               </div>
            </li>
            
@@ -59,15 +60,38 @@
               <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="dropdown07XL" data-toggle="dropdown"
                 aria-expanded="false" style="color: white;">  Celebrite</a>
-              <div class="dropdown-menu" style="background-color:transparent"  aria-labelledby="dropdown07XL">
-                <a class="dropdown-item" style="color: white;"th:href="@{/celebrites}"> Afficher</a>
-                <a class="dropdown-item" style="color: white;"th:href="@{/findCelebrite}" >Rechercher</a>
-                <a class="dropdown-item" style="color: white;"th:href="@{/formCelebrite}" >Ajouter</a>
+              <div class="dropdown-menu"   aria-labelledby="dropdown07XL">
+                <a class="dropdown-item" th:href="@{/celebrites}"> Afficher</a>
+                <a class="dropdown-item" th:href="@{/findCelebrite}" >Rechercher</a>
+                <a sec:authorize="hasRole('ROLE_ADMIN')"class="dropdown-item" th:href="@{/formCelebrite}" >Ajouter</a>
               </div>
            </li>
-           
+           <li sec:authorize="hasRole('ROLE_ANONYMOUS')"class="nav-item active">
+              <a class="nav-link" th:href="@{/login}">Login</a>
       
               </li>
+              
+               <li  sec:authorize="hasRole('ROLE_ANONYMOUS')"class="nav-item active">
+              <a class="nav-link" th:href="@{/formUser}">Inscription</a>
+      
+              </li>
+              
+               <li class="nav-item active">
+              <a sec:authorize="hasRole('ROLE_ADMIN')"class="nav-link" th:href="@{/logout}">Logout</a>
+      
+              </li>
+                             <li class="nav-item active">
+              <a sec:authorize="hasRole('ROLE_USER')"class="nav-link" th:href="@{/logout}">Logout</a>
+      
+              </li>
+              
+              
+              </li>
+                             <li class="nav-item active">
+              <a sec:authorize="hasRole('ROLE_ADMIN')"class="nav-link" th:href="@{/users}">Utilisateus</a>
+      
+              </li>
+              
             </ul>
             </div>
             </nav>

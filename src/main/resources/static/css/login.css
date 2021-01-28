@@ -23,6 +23,7 @@ body {
   width: 100%;
   max-width: 400px;
   min-height: 400px;
+  opacity:0.8;
   
   box-shadow: 0 50px 70px -20px rgb(105, 88, 51);
 }
@@ -36,6 +37,7 @@ body {
   right: 0;
   bottom: 0;
   left: 0;
+
   background-image: radial-gradient(ellipse at left bottom,rgb(209, 163, 94) 25%,rgb(141, 131, 104) 59%, rgba(25)59%);
   box-shadow: 0 -20px 150px -20px rgb(194, 140, 78);
 }
@@ -203,4 +205,9 @@ body {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+ 
+  
 }
+
+
+

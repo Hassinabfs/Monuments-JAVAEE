@@ -55,6 +55,8 @@ public class CelebriteRestService {
 		return "findCelebrite";	
 	}
 	
+	
+	
 	@RequestMapping(value="/deleteCelebrite")
 	public String removeCelebrite(@RequestParam  String numC ){
 		

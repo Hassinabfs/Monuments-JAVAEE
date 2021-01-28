@@ -3,7 +3,9 @@
    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
    layout:decorator="index">
 <head>
+<link rel="stylesheet" th:href="@{/css/find.css}"/>
 <link rel="stylesheet" th:href="@{https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css}" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous"> 
+
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
@@ -11,31 +13,53 @@
 
 <div layout:fragment="content" class="noborder">
 
-<table class="table table-bordered table-dark">
-<thead>
+    <div class="flex-container container">
+    
+ <form th:action="@{/findDepartement}" method="get">
+	
+	   <input id="login-input-user" class="form__input" type="text" placeholder="Numero"name="dep" th:value="${dep}"/>
+	
+	<button type="submit" class="btn btn-dark"  style="border-radius: 1.5rem;">Chercher</button>
+  </form> 
+    
+  
+  
+  <table class="table" style="margin: auto;width: 1100px" >
+<thead class="thead-light">
 <tr>
 <th>Departement</th>
 <th>Chef lieu</th>
-<th>numero de departement</th>
-<th>numero de region</th>
+<th>Numero de departement</th>
+<th>Numero de region</th>
+<th sec:authorize="hasRole('ROLE_ADMIN')">Supprimer</th>
+<th sec:authorize="hasRole('ROLE_ADMIN')">Modifier</th>
 </tr>
 </thead>
 <tbody >
 
-<tr th:each="departement:${departements}" >
+<tr th:each="departement:${departements}"  style="background-color: rgba(204, 187, 187, 0.25);" >
 
- <td th:text="${departement.dep}"></td>
-<td th:text="${departement.chefLieu}"></td>
-<td th:text="${departement.nomDep}" ></td>
-<td th:text="${departement.numReg}"></td>
-</tr>
+<td style="color: white;" th:text="${departement.dep}"></td>
+<td style="color: white;"th:text="${departement.chefLieu}"></td>
+<td style="color: white;" th:text="${departement.nomDep}" ></td>
+<td style="color: white;" th:text="${departement.numReg}"></td>
+
+           
+            <div sec:authorize="hasRole('ROLE_ADMIN')" class="table-button-container">
+         <td> <button class="btn btn-warning btn-sm" @click="editRow(props.rowData)">
+            <span class="glyphicon glyphicon-pencil"></span> <a th:href="@{editDepartement(dep=${departement.dep})}">Edit</a></button></td>
+         
+          <td><button type="submit"  class="btn btn-danger btn-sm" @click="deleteRow(props.rowData)">
+            <span class="glyphicon glyphicon-trash"></span>  <a onclick="return confirm('Etes vous sure ?')" th:href="@{/deleteDep(dep=${departement.dep})}">Delete</a></button></td>
+      </div>
+                        
+</tr>   
 </tbody>
 </table>
 
-
+       
 </div>
-
-<script th:replace="fragments :: scripts"></script>
+</div>
 
 </body>
 </html>

@@ -64,6 +64,12 @@ public class DepartementMetierImpl implements DepartementMetier {
 		// TODO Auto-generated method stub
 		return departementRepository.findById(dep);
 	}
+
+	@Override
+	public Optional<Departement> findByNomDep(String dep) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 	
 
 

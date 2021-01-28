@@ -1,0 +1,45 @@
+@charset "UTF-8";
+
+.photo-container {
+  background-image: url(https://hips.hearstapps.com/gioit.h-cdn.co/assets/17/41/1507903214-tour-eiffel-visita.jpg);
+  background-size: cover;
+  height: 100vh;
+  background-position-x: 50%;
+  background-position-y: center;
+  box-shadow: inset 0px 0px 0 2000px rgba(0,0,0,0.5);
+}
+.flex-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.form__input {
+  color: white;
+  font-size: 1.15rem;
+  width: 50%;
+  padding: .5rem 2rem;
+  border: 2px solid transparent;
+  outline: none;
+  border-radius: 1.5rem;
+  background-color: rgba(204, 187, 187, 0.25);
+  letter-spacing: 1px;
+}
+
+.form__input:hover,
+.form__input:focus{
+  color: white;
+  border: 2px solid rgba(126, 120, 120, 0.5);
+  background-color: transparent;
+}
+
+.form__input + .login__label {
+  margin-top: 1.5rem;
+}
+
+.form__input--checkbox {
+  position: absolute;
+  top: .1rem;
+  left: 0;
+  margin: 0;
+}

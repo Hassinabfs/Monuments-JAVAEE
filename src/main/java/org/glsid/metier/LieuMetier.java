@@ -21,5 +21,7 @@ public interface LieuMetier {
 	
 	public Lieu updateLieu(Lieu l);
 	
+	Optional<Lieu> findDepartByDep(Departement dep);
+	
 
 }

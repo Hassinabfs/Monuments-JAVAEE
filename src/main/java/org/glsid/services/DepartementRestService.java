@@ -58,6 +58,21 @@ public class DepartementRestService {
 		return "findDepartement";	
 	}
 	
+	
+	@Secured(value = { "ROLE_ADMIN","ROLE_USER"}) 
+	@RequestMapping (value="/findDepartementNom")
+	public String getDepartementNomDep(Model model, String nomDep){
+		try {
+	Optional<Departement> listDep= departementMetier.findByNomDep(nomDep);
+		model.addAttribute("departement", listDep.get());
+		}catch(Exception e) {
+		model.addAttribute("Exception",e);}
+		return "findDepartement";	
+	}
+	
+	
+	
+	
 	@Secured(value = {"ROLE_ADMIN"}) 
 	@RequestMapping(value="/deleteDep")
 	public String removeDepartement(@RequestParam String dep ){
