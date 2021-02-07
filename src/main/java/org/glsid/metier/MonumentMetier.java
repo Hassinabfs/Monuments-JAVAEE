@@ -20,4 +20,9 @@ public interface MonumentMetier {
 	
 	public Monument updateMonument(Monument m);
 	public double distance(String codeMA, String codeMB);
+
+	public void associe(String numC, String codeM);
+	
+	
+
 }

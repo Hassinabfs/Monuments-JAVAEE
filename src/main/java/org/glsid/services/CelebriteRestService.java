@@ -1,5 +1,6 @@
 package org.glsid.services;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
@@ -73,5 +74,19 @@ public class CelebriteRestService {
 	    model.addAttribute("celebrite", celebrite);
 	    return "formCelebrite";
 	}
+	
+	
+	@RequestMapping(value = "/findCelebriteByMunument")
+	public String celebriteByMonument(Model model, String codeM) {
+		try {
+			Collection<Celebrite> celebriteM = celebriteMetier.getCelebriteByMonument(codeM);
+			model.addAttribute("celebriteM ", celebriteM );
+
+		} catch (Exception e) {
+			model.addAttribute("exception", e);
+		}
+		return "findCelebriteByMunument";
+	}
+	
 
 }

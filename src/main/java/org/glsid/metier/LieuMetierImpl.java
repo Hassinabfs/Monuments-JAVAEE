@@ -55,14 +55,8 @@ public class LieuMetierImpl implements LieuMetier {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
 	
-	@Override
-	public Optional<Lieu> findDepartByDep(Departement dep) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
-	
-	
+
 
 }

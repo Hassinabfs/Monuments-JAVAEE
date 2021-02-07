@@ -82,7 +82,7 @@ public class AuthentificationController {
 	public String updateUser(String username, Model model) {
 		User user = userRepository.findByUsername(username).orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + username));
 	    model.addAttribute("user", user);
-	    return "formUser";
+	    return "formInscription";
 	
 	}	
 	

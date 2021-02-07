@@ -1,18 +1,27 @@
 package org.glsid.metier;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
+import javax.transaction.Transactional;
+
 import org.glsid.dao.CelebriteRepository;
 import org.glsid.dao.LieuRepository;
+import org.glsid.dao.MonumentRepository;
 import org.glsid.entite.Celebrite;
 import org.glsid.entite.Lieu;
+import org.glsid.entite.Monument;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 @Service
+@Transactional
 public class CelebriteMetierImpl implements CelebriteMetier{
 	@Autowired
 	private CelebriteRepository celebriteRepository;
+	
+	@Autowired
+	private MonumentRepository monumentRepository;
 
 	@Override
 	public Celebrite saveCelebrite(Celebrite c) {
@@ -55,6 +64,13 @@ public class CelebriteMetierImpl implements CelebriteMetier{
 	public Celebrite updateCelebrite(Celebrite c) {
 		// TODO Auto-generated method stub
 		return null;
+	}
+	
+	@Override
+	public Collection<Celebrite> getCelebriteByMonument(String codeM) {
+		Monument monument =monumentRepository.getOne(codeM);
+		return monument.getCelebriteS();
+	
 	}
 
 

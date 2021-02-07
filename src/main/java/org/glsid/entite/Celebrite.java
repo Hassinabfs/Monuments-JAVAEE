@@ -28,9 +28,9 @@ public class Celebrite implements Serializable {
 	private String nom;
 	@Column(length = 16)
 	private String prenom;
-	@Column(length = 10)
+	@Column(length = 15)
 	private String nationalite;
-	@Column(length = 06)
+	@Column(length = 15)
 	private String epoque;
 	
 	@ManyToMany(mappedBy="celebriteS",fetch=FetchType.LAZY)

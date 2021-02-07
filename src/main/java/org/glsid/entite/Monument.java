@@ -16,8 +16,6 @@ import javax.persistence.ManyToOne;
 
 @Entity 
 
-
-
 public class Monument implements Serializable {
 	/**
 	 * 
@@ -27,11 +25,11 @@ public class Monument implements Serializable {
 	
 	@Column(name = "codeM",length = 25)
 	private String codeM;
-	@Column(name = "nomM",length = 25)
+	@Column(name = "nomM",length = 40)
 	private String nomM ;
 	@Column(length = 10)
 	private String proprietaire ;
-	@Column(name = "typeMonument",length = 20)
+	@Column(name = "typeMonument",length = 40)
 	private String typeMonument;
 	private double longitude;
 	private double latitude;
@@ -122,6 +120,14 @@ public class Monument implements Serializable {
 
 	public void setLocalisation(Lieu localisation) {
 		this.localisation = localisation;
+	}
+
+	public Collection<Celebrite> getCelebriteS() {
+		return celebriteS;
+	}
+
+	public void setCelebriteS(Collection<Celebrite> celebriteS) {
+		this.celebriteS = celebriteS;
 	}
 
 	

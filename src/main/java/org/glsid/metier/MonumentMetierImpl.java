@@ -3,16 +3,26 @@ package org.glsid.metier;
 import java.util.List;
 import java.util.Optional;
 
+import javax.transaction.Transactional;
+
+import org.glsid.dao.CelebriteRepository;
 import org.glsid.dao.MonumentRepository;
+import org.glsid.entite.Celebrite;
 import org.glsid.entite.Monument;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.apache.lucene.util.SloppyMath;
 
 @Service
+@Transactional
 public class MonumentMetierImpl implements MonumentMetier {
+	
+	
 	@Autowired
 	private MonumentRepository monumentRepository;
+	@Autowired
+	private CelebriteRepository celebriteRepository;
+	
 	@Override
 	public Monument saveMonument(Monument m) {
 		// TODO Auto-generated method stub
@@ -67,5 +77,17 @@ public class MonumentMetierImpl implements MonumentMetier {
 			return distance;
 		
 	}
+
+
+	
+	@Override
+	public void associe(String numC, String codeM) {
+		Monument monument= monumentRepository.getOne(codeM);
+		Celebrite celebrite = celebriteRepository.getOne(numC);
+		monument.getCelebriteS().add(celebrite);
+		celebrite.getOeuvreDe().add(monument);
+	}
+	
+
 
 }

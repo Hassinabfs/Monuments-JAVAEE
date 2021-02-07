@@ -92,7 +92,28 @@ public class MonumentRestService {
 		model.addAttribute("distance", distance);
 	
 	     return "distance"; 
+	     
 	}
+	
+	
+	
+	@GetMapping(value="/formAssocie")
+	public String formAssocie() {
+		return "formAssocie";
+	}
+	
+	
+	@RequestMapping(value = "/associer")
+	public String AddCelebriteToMonument(String numC, String codeM) {
+      monumentMetier.associe(numC, codeM);
+	
+		return "findMonument";
+	}
+	
+	
+	
+	
+	
 	
 
 }

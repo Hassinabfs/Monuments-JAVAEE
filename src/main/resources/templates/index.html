@@ -63,6 +63,7 @@
               <div class="dropdown-menu"   aria-labelledby="dropdown07XL">
                 <a class="dropdown-item" th:href="@{/celebrites}"> Afficher</a>
                 <a class="dropdown-item" th:href="@{/findCelebrite}" >Rechercher</a>
+                <a class="dropdown-item" th:href="@{/findCelebriteByMunument}" >Rechercher par monument</a>
                 <a sec:authorize="hasRole('ROLE_ADMIN')"class="dropdown-item" th:href="@{/formCelebrite}" >Ajouter</a>
               </div>
            </li>
@@ -91,6 +92,11 @@
               <a sec:authorize="hasRole('ROLE_ADMIN')"class="nav-link" th:href="@{/users}">Utilisateus</a>
       
               </li>
+               <li class="nav-item active">
+              <a sec:authorize="hasRole('ROLE_ADMIN')"class="nav-link" th:href="@{/formAssocie}">Associer</a>
+      
+              </li>
+              
               
             </ul>
             </div>
@@ -106,7 +112,7 @@
     
     
       <h1>Bienvenue sur APPTRAVEL </h1>
-      <h2> Merci de vous identifiez</h2>
+    
      
     </div>
     </div>
