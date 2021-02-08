@@ -51,6 +51,7 @@
               <div class="dropdown-menu"   aria-labelledby="dropdown07XL">
                 <a class="dropdown-item" th:href="@{/monuments}"> Afficher</a>
                 <a class="dropdown-item"th:href="@{/findMonument}" >Rechercher</a>
+                <a class="dropdown-item" th:href="@{/findMonumentByCelebrite}" >Rechercher par celebrite</a>
                 <a sec:authorize="hasRole('ROLE_ADMIN')" class="dropdown-item" th:href="@{/formMonument}" >Ajouter</a>
                 <a class="dropdown-item" th:href="@{/formMonumentDistance}" >Distance</a>
               </div>
@@ -63,7 +64,7 @@
               <div class="dropdown-menu"   aria-labelledby="dropdown07XL">
                 <a class="dropdown-item" th:href="@{/celebrites}"> Afficher</a>
                 <a class="dropdown-item" th:href="@{/findCelebrite}" >Rechercher</a>
-                <a class="dropdown-item" th:href="@{/findCelebriteByMunument}" >Rechercher par monument</a>
+                <a class="dropdown-item" th:href="@{/findCelebriteByMonument}" >Rechercher par monument</a>
                 <a sec:authorize="hasRole('ROLE_ADMIN')"class="dropdown-item" th:href="@{/formCelebrite}" >Ajouter</a>
               </div>
            </li>

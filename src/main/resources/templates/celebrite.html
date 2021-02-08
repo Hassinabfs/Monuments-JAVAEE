@@ -32,8 +32,8 @@
 <th>Prenom</th>
 <th>Nationalite</th>
 <th>Epoque</th>
-<th>Modifier</th>
-<th>Supprimer</th>
+<th sec:authorize="hasRole('ROLE_ADMIN')">Modifier</th>
+<th sec:authorize="hasRole('ROLE_ADMIN')">Supprimer</th>
 
 </tr>
 </thead>
@@ -49,8 +49,8 @@
 
 
     
-      <div class="table-button-container">
-         <td> <button class="btn btn-warning btn-sm" @click="editRow(props.rowData)">
+      <div sec:authorize="hasRole('ROLE_ADMIN')" class="table-button-container">
+         <td > <button class="btn btn-warning btn-sm" @click="editRow(props.rowData)">
             <span class="glyphicon glyphicon-pencil"></span> <a th:href="@{editCelebrite(numC=${celebrite.numC})}">Edit</a></button></td>
          
           <td><button type="submit" class="btn btn-danger btn-sm" @click="deleteRow(props.rowData)">

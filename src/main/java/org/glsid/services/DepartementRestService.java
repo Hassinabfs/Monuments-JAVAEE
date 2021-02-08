@@ -23,6 +23,8 @@ import org.springframework.web.bind.annotation.RestController;
 public class DepartementRestService {
 	@Autowired
 	private DepartementMetier departementMetier;
+	
+	//afficher  la liste des departements
 
 	@Secured(value = { "ROLE_ADMIN","ROLE_USER"}) 
 	@RequestMapping(value="/departements",method=RequestMethod.GET)
@@ -32,6 +34,10 @@ public class DepartementRestService {
 		return "departement";
 	}
 	
+	
+	// formulaire d'ajout d'un  departement
+	
+	
 	@Secured(value = { "ROLE_ADMIN"}) 
 	@GetMapping(value="/formDepartement")
 	public String formDepartement(Model model) {
@@ -39,15 +45,17 @@ public class DepartementRestService {
 		return "formDepartement";
 	}
 	
+	// la methode d'ajout d'un departement dans la base (sauvegarder)
+	
 	
 	@Secured(value = { "ROLE_ADMIN"}) 
 	@RequestMapping(value="/addDepartement")
 	public String ajoutDepartement(Departement d) {
 		departementMetier.saveDepartement(d);
-		return "formDepartement";
+		return "departement";
 	}
 	
-	
+	// trouver un departement par numero de departement (cle primaire)
 	
 	@Secured(value = { "ROLE_ADMIN","ROLE_USER"}) 
 	@RequestMapping (value="/findDepartement")
@@ -61,6 +69,7 @@ public class DepartementRestService {
 	}
 	
 	
+	// supprimer un departement
 	
 	
 	@Secured(value = {"ROLE_ADMIN"}) 
@@ -71,15 +80,17 @@ public class DepartementRestService {
 		if(deleteDep != null) {
 			departementMetier.removeDepartement(deleteDep);
 		}
-		return "findDepartement";
+		return "departement";
 	}
+	
+	// modifier un departement
 	
 	@Secured(value = {"ROLE_ADMIN"}) 
 	@GetMapping("/editDepartement")
 	public String updateDep(String dep, Model model) {
-	    Departement  departement = departementMetier.findByDep(dep).orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + dep));
+	    Departement  departement = departementMetier.findByDep(dep).orElseThrow(() -> new IllegalArgumentException("Invalid :" + dep));
 	    model.addAttribute("departement", departement);
-	    return "formDepartement";
+	    return "departement";
 	}
 	
 	

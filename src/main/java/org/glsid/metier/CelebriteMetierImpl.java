@@ -68,8 +68,10 @@ public class CelebriteMetierImpl implements CelebriteMetier{
 	
 	@Override
 	public Collection<Celebrite> getCelebriteByMonument(String codeM) {
-		Monument monument =monumentRepository.getOne(codeM);
+		Monument monument = monumentRepository.getOne(codeM);
+		System.out.println("il est laaaaaaaaaaaaaaaaaa"+monument);
 		return monument.getCelebriteS();
+		
 	
 	}
 

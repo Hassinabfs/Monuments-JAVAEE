@@ -1,5 +1,6 @@
 package org.glsid.metier;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
@@ -86,6 +87,13 @@ public class MonumentMetierImpl implements MonumentMetier {
 		Celebrite celebrite = celebriteRepository.getOne(numC);
 		monument.getCelebriteS().add(celebrite);
 		celebrite.getOeuvreDe().add(monument);
+	}
+
+	@Override
+	public Collection<Monument> getMonumentByCelebrite(String numC) {
+		// TODO Auto-generated method stub
+		Celebrite celebrite = celebriteRepository.getOne(numC);
+		return celebrite.getOeuvreDe();
 	}
 	
 

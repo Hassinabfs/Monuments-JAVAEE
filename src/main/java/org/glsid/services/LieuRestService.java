@@ -27,6 +27,8 @@ public class LieuRestService {
 	private LieuMetierImpl lieuMetier;
 	
 	
+	//afficher  la liste des lieux
+	
 	@Secured(value = { "ROLE_ADMIN","ROLE_USER"}) 
 	@RequestMapping(value="/lieux",method=RequestMethod.GET)
 	public String listLieu(Model model) {
@@ -35,6 +37,8 @@ public class LieuRestService {
 		return "lieux";
 	}
 	
+	//// formulaire d'ajout d'un  lieu
+	
 	@Secured(value = { "ROLE_ADMIN"}) 
 	@GetMapping(value="/formLieu")
 	public String formLieu(Model model) {
@@ -42,13 +46,17 @@ public class LieuRestService {
 		return "formLieu";
 	}
 	
+	// la methode d'ajout d'un lieu dans la base (sauvegarder)
+	
 	@Secured(value = {"ROLE_ADMIN"}) 
 	@RequestMapping(value="/addLieu")
 	public String ajoutLieu(Lieu l) {
 		lieuMetier.saveLieu(l);
-		return "formLieu";
+		return "lieux";
 	}
 	
+	
+	// trouver un lieu par son code Insee (cle primaire)
 	
 	@Secured(value = { "ROLE_ADMIN","ROLE_USER"}) 
 	@RequestMapping (value="/findLieu")
@@ -62,7 +70,7 @@ public class LieuRestService {
 	}
 	
 	
-
+	// supprimer un lieu
 	
 	@Secured(value = {"ROLE_ADMIN"}) 
 	@RequestMapping(value="/deleteLieu")
@@ -72,15 +80,18 @@ public class LieuRestService {
 		if(deleteLieu != null) {
 			lieuMetier.removeLieu(deleteLieu);
 		}
-		return "findLieu";
+		return "lieux";
 	}
+	
+	
+	// modifier un lieu
 	
 	@Secured(value = {"ROLE_ADMIN"}) 
 	@GetMapping("/editLieu")
 	public String updateLieu( String codeInsee, Model model) {
 		Lieu  lieu = lieuMetier.findByCodeInsee(codeInsee).orElseThrow(() -> new IllegalArgumentException("Invalid user Id:" + codeInsee));
 	    model.addAttribute("lieu", lieu);
-	    return "formLieu";
+	    return "lieux";
 	}
 	
 	

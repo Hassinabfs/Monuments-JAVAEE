@@ -15,15 +15,15 @@
 
     <div class="flex-container container">
 
-<form th:action="@{/findMonument}" method="get">
-	 <input id="login-input-user" class="form__input" type="text" placeholder="Code monument" name="codeM"  />
+<form th:action="@{/findMonumentByCelebrite}" method="get">
+	 <input id="login-input-user" class="form__input" type="text" placeholder="num celebrite" name="numC" />
 	
 	<button type="submit" class="btn btn-dark"  style="border-radius: 1.5rem;">Chercher</button>
   </form>
   
   
 
- <table class="table" style="margin: auto;width: 1100px" th:if="${monument}">
+ <table class="table" style="margin: auto;width: 1100px" th:if="${monumentC}">
 <thead class="thead-light">
 <tr>
 <th>Code monument</th>
@@ -40,7 +40,7 @@
 </thead>
 <tbody >
 
-<tr style="background-color: rgba(204, 187, 187, 0.25);" >
+<tr th:each="monument:${monumentC}" style="background-color: rgba(204, 187, 187, 0.25);" >
 
 <td style="color: white;" th:text="${monument.codeM }"></td>
 <td style="color: white;" th:text="${monument.nomM}"></td>

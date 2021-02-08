@@ -1,8 +1,10 @@
 package org.glsid.metier;
 
+import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
+import org.glsid.entite.Celebrite;
 import org.glsid.entite.Lieu;
 import org.glsid.entite.Monument;
 
@@ -22,6 +24,8 @@ public interface MonumentMetier {
 	public double distance(String codeMA, String codeMB);
 
 	public void associe(String numC, String codeM);
+	
+	public Collection<Monument> getMonumentByCelebrite(String numC);
 	
 	
 
